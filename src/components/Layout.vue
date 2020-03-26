@@ -1,15 +1,16 @@
 <template>
-  <div>
-  <Layout>
-    <p>labels.vue</p>
-  </Layout>
+  <div class="Nav-wrapper">
+    <div class="content">
+      <slot></slot>
+    </div>
+    <Nav/>
   </div>
 
 </template>
 
 <script lang="ts">
   export default {
-    name: 'Labels'
+    name: 'Layout'
   };
 </script>
 
@@ -24,5 +25,4 @@
     overflow: auto;
     flex-grow: 1;
   }
-
 </style>
