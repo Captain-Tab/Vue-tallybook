@@ -40,7 +40,7 @@
       }
     }
     > .item.selected{
-      color: red;
+      color: #228B22;
     }
   }
 </style>
