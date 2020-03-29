@@ -1,33 +1,68 @@
 <template>
   <div CLASS="numberPad">
-    <div class="output">100</div>
+    <div class="output">{{outputText}}</div>
     <div class="buttons">
-      <button>1</button>
-      <button>2</button>
-      <button>3</button>
-      <button>删除</button>
-      <button>4</button>
-      <button>5</button>
-      <button>6</button>
-      <button>清空</button>
-      <button>7</button>
-      <button>8</button>
-      <button>9</button>
-      <button class="ok">OK</button>
-      <button class="zero">0</button>
-      <button>.</button>
+      <button @click="inputContent">1</button>
+      <button @click="inputContent">2</button>
+      <button @click="inputContent">3</button>
+      <button @click="removeText">删除</button>
+      <button @click="inputContent">4</button>
+      <button @click="inputContent">5</button>
+      <button @click="inputContent">6</button>
+      <button @click="cleanText">清空</button>
+      <button @click="inputContent">7</button>
+      <button @click="inputContent">8</button>
+      <button @click="inputContent">9</button>
+      <button @click="okMethod" class="ok">OK</button>
+      <button @click="inputContent" class="zero">0</button>
+      <button @click="inputContent">.</button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  export default {
-    name: 'NumberPad'
-  };
+  import Vue from 'vue';
+  import {Component, Prop} from 'vue-property-decorator';
+
+  @Component
+  export default class NumberPad extends Vue {
+    outputText = '0';
+
+    inputContent(event: MouseEvent) {
+      const button = (event.target as HTMLButtonElement);
+      const inputText = button.textContent as string;
+      if (this.outputText.length === 16) {return;}
+      if (this.outputText === '0') {
+        if ('0123456789'.indexOf(inputText) >= 0) {
+          this.outputText = inputText;
+        } else {
+          this.outputText += inputText;
+        }
+        return;
+      }
+      if (this.outputText.indexOf('.') >= 0 && inputText === '.') {return;}
+      this.outputText += inputText;
+    }
+
+    removeText() {
+      if (this.outputText.length === 1) {
+        this.outputText = '0';
+      } else {
+        this.outputText = this.outputText.slice(0, -1);
+      }
+    }
+
+    cleanText() {
+      this.outputText = '0';
+    }
+    //okMethod(){}
+  }
+
 </script>
 
 <style lang="scss" scoped>
   @import "../../assets/style/helper";
+
   .numberPad {
     .output {
       @extend %clearFix;
@@ -36,10 +71,12 @@
       font-family: Consolas, monospace;
       padding: 9px 16px;
       text-align: right;
+      height: 72px;
     }
 
     .buttons {
       @extend %clearFix;
+
       > button {
         width: 25%;
         height: 64px;
@@ -86,10 +123,12 @@
         &:nth-child(12) {
           background: darken($bg, 4*6%);
         }
-        &:nth-child(15){
+
+        &:nth-child(15) {
           background: darken($bg, 4*7%);
         }
-        &:nth-child(16){
+
+        &:nth-child(16) {
           background: darken($bg, 4*10%);
         }
       }
