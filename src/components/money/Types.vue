@@ -13,11 +13,14 @@
 
 <script lang="ts">
   import Vue from 'vue';
-  import {Component} from 'vue-property-decorator';
+  import {Component, Prop} from 'vue-property-decorator';
 
   @Component
   export default class Types extends Vue {
     type = '-'; // 表示支出
+    @Prop(Number) propA: number | undefined;
+    // @Prop(Number) propA 编译时类型
+    // propA: number | undefined 运行时类型
     selectType(type: string) {
       if (type !== '-' && type !== '+') {
         throw new Error('类型不存在');
