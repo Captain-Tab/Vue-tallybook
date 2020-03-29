@@ -17,15 +17,13 @@
 
   @Component
   export default class Types extends Vue {
-    type = '-'; // 表示支出
-    @Prop(Number) propA: number | undefined;
-    // @Prop(Number) propA 编译时类型
-    // propA: number | undefined 运行时类型
+    @Prop({default: '-'}) readonly type!: string;
+
     selectType(type: string) {
       if (type !== '-' && type !== '+') {
         throw new Error('类型不存在');
       }
-      this.type = type;
+      this.$emit('update:value', type);
     }
   }
 

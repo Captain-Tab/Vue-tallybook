@@ -13,7 +13,7 @@
       <button @click="inputContent">7</button>
       <button @click="inputContent">8</button>
       <button @click="inputContent">9</button>
-      <button class="ok">OK</button>
+      <button @click="okMethod" class="ok">OK</button>
       <button @click="inputContent" class="zero">0</button>
       <button @click="inputContent">.</button>
     </div>
@@ -55,7 +55,9 @@
     cleanText() {
       this.outputText = '0';
     }
-    //okMethod(){}
+    okMethod(){
+      this.$emit('update:value',this.outputText)
+    }
   }
 
 </script>
