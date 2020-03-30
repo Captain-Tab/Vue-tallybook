@@ -59,7 +59,8 @@
 
     okMethod() {
       this.$emit('update:value', this.outputText);
-      this.$emit('submit', this.outputText)
+      this.$emit('submit', this.outputText);
+      this.outputText = '0';
     }
   }
 
