@@ -59,6 +59,7 @@
 
     okMethod() {
       this.$emit('update:value', this.outputText);
+      this.$emit('submit', this.outputText)
     }
   }
 
