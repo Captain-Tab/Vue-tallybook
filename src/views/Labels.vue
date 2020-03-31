@@ -2,8 +2,8 @@
   <div>
     <Layout>
       <ol class="tags">
-        <li v-for="tag in tags" :key="tag">
-          <span>{{tag}}</span>
+        <li v-for="tag in tags" :key="tag.id">
+          <span>{{tag.name}}</span>
         </li>
       </ol>
       <div class="moreTag-wrapper">
@@ -44,8 +44,6 @@
   .tags {
     font-size: 16px;
     padding-left: 16px;
-
-
     > li {
       min-height: 44px;
       display: flex;
