@@ -1,14 +1,16 @@
 <template>
   <div>
     <Layout>
-      <ol class="tags">
-        <li v-for="tag in tags" :key="tag.id">
+      <div class="tags">
+        <router-link class="tag"
+                     v-for="tag in tags" :key="tag.id"
+                     :to="`/labels/edit/${tag.id}`">
           <span>{{tag.name}}</span>
-        </li>
-      </ol>
-      <div class="moreTag-wrapper">
-        <button class="moreTag" @click="createTag">新增标签</button>
+        </router-link>
       </div>
+        <div class="moreTag-wrapper">
+          <button class="moreTag" @click="createTag">新增标签</button>
+        </div>
     </Layout>
   </div>
 
@@ -20,7 +22,6 @@
   import tagListModel from '@/models/tagListModel';
 
   tagListModel.fetch();
-  console.log(tagListModel.data);
   @Component
   export default class Labels extends Vue {
     tags = tagListModel.data;
@@ -29,10 +30,10 @@
       const name = window.prompt('请输入标签名');
       if (name) {
         const message = tagListModel.create(name);
-        if(message === 'success'){
-          window.alert('新增标签成功')
-        }else if (message === 'name is duplicated'){
-          window.alert('重复的标签名，新增失败')
+        if (message === 'success') {
+          window.alert('新增标签成功');
+        } else if (message === 'name is duplicated') {
+          window.alert('重复的标签名，新增失败');
         }
       }
     }
@@ -45,7 +46,8 @@
   .tags {
     font-size: 16px;
     padding-left: 16px;
-    > li {
+
+    > .tag {
       min-height: 44px;
       display: flex;
       align-items: center;
