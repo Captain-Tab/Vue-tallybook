@@ -1,5 +1,6 @@
 <template>
   <Layout class-prefix="layout">
+    {{record}}
     <NumberPad :value.sync="record.amount" @submit="SaveRecord"/>
     <FormItem field-name="备注"
               placeholder="在这里输入"
