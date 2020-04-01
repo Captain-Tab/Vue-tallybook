@@ -20,6 +20,7 @@
   import tagListModel from '@/models/tagListModel';
 
   tagListModel.fetch();
+  console.log(tagListModel.data);
   @Component
   export default class Labels extends Vue {
     tags = tagListModel.data;
