@@ -1,9 +1,7 @@
 <template>
   <div>
     <Layout>
-
       <div class="tags">
-
         <router-link class="tag"
                      v-for="tag in tags" :key="tag.id"
                      :to="`/labels/edit/${tag.id}`">
@@ -52,7 +50,7 @@
   .tags {
     font-size: 16px;
     padding-left: 16px;
-
+    background: white;
     > .tag {
       min-height: 44px;
       display: flex;
