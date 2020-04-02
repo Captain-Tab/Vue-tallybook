@@ -58,9 +58,7 @@ window.localStorage.setItem('version', '0.0.2');
     }
 
     SaveRecord() {
-      const record2 = recordListModel.clone(this.record);
-      record2.time = new Date();
-      this.recordList.push(record2);
+      recordListModel.create(this.record);
     }
 
     @Watch('recordList')
