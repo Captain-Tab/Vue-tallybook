@@ -65,7 +65,7 @@ window.localStorage.setItem('version', '0.0.2');
 
     @Watch('recordList')
     onRecordListChanged() {
-      recordListModel.save(this.recordList);
+      recordListModel.save();
     }
   }
 </script>
