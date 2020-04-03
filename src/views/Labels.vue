@@ -31,13 +31,8 @@
 
     createTag() {
       const name = window.prompt('请输入标签名');
-      if (name) {
-        const message = tagListModel.create(name);
-        if (message === 'success') {
-          window.alert('新增标签成功');
-        } else if (message === 'name is duplicated') {
-          window.alert('重复的标签名，新增失败');
-        }
+      if(name){
+        window.createTag(name)
       }
     }
   }
