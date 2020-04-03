@@ -10,7 +10,7 @@
         </router-link>
       </div>
       <div class="button-wrapper">
-        <Button  @click="createTag">新建标签</Button>
+        <Button @click="createTag">新建标签</Button>
       </div>
     </Layout>
   </div>
@@ -23,12 +23,11 @@
   import tagListModel from '@/models/tagListModel';
   import Button from '@/components/money/Button.vue';
 
-  tagListModel.fetch();
   @Component({
     components: {Button}
   })
   export default class Labels extends Vue {
-    tags = tagListModel.data;
+    tags = window.tagList;
 
     createTag() {
       const name = window.prompt('请输入标签名');
@@ -51,12 +50,14 @@
     font-size: 16px;
     padding-left: 16px;
     background: white;
+
     > .tag {
       min-height: 44px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid #e6e6e6;
+
       svg {
         width: 18px;
         height: 18px;
