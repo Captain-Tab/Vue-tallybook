@@ -1,4 +1,3 @@
-import recordListModel from '@/models/recordListModel';
 import recordStore from '@/store/recordStore';
 import tagStore from '@/store/tagStore';
 
