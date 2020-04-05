@@ -6,6 +6,8 @@
               @update:value="onUpdateFormItem"/>
     <Tags/>
     <Types :value.sync="record.type"/>
+    {{count}}
+    <button @click="add">+1</button>
   </Layout>
 </template>
 
@@ -16,7 +18,9 @@
   import FormItem from '@/components/money/FormItem.vue';
   import Tags from '@/components/money/Tags.vue';
   import {Component} from 'vue-property-decorator';
-  import store from '@/store/index2';
+  import oldStore from '@/store/index2';
+  import store from '@/store/index.ts';
+
 
   /*if (version < '0.0.2') {
   const version = window.localStorage.getItem('version') || '0';
@@ -36,9 +40,9 @@ window.localStorage.setItem('version', '0.0.2');
   @Component({
     components: {Tags, FormItem, Types, NumberPad},
     computed: {
-      recordList() {
-        return store.recordList;
-      }
+      count() {
+        return store.state.count;
+      },
     }
   })
   export default class Money extends Vue {
@@ -54,8 +58,12 @@ window.localStorage.setItem('version', '0.0.2');
     }
 
     SaveRecord() {
-      store.createRecord(this.record);
+      oldStore.createRecord(this.record);
     }
+
+    add() {
+      store.commit('increment', 1);
+    }c
 
   }
 </script>
