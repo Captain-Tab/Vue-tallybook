@@ -57,8 +57,8 @@ const store = new Vuex.Store({
       if (idList.indexOf(id) >= 0) {
         const names = state.tagList.map(item => item.name);
         if (names.indexOf(name) >= 0) {
-          // TODO 存在BUG
-          window.alert('标签名重复了');
+          //TODO 存在Bug
+          window.alert('修改了标签名');
         } else {
           const tag = state.tagList.filter(item => item.id === id)[0];
           tag.name = name;
@@ -77,8 +77,8 @@ const store = new Vuex.Store({
       if (index >= 0) {
         state.tagList.splice(index, 1);
         store.commit('saveTags');
-        window.alert('删除成功')
-        router.back()
+        window.alert('删除成功');
+        router.back();
       } else {
         window.alert('删除失败');
       }
