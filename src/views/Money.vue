@@ -35,13 +35,12 @@ window.localStorage.setItem('version', '0.0.2');
 
   @Component({
     components: {Tags, FormItem, Types, NumberPad},
-    computed: {
-      tagList() {
-        return this.$store.state.tagList;
-      }
-    }
   })
   export default class Money extends Vue {
+    get tagList() {
+      return this.$store.state.tagList;
+    }
+
     record: RecordItem = {
       tags: [],
       note: '',
