@@ -5,7 +5,6 @@
               placeholder="在这里输入"
               @update:value="onUpdateFormItem"/>
     <Tags/>
-
     <Tabs :data-source="recordTypeList"
          :value.sync="record.type"/>
   </Layout>
@@ -14,7 +13,6 @@
 <script lang="ts">
   import Vue from 'vue';
   import NumberPad from '@/components/money/NumberPad.vue';
-  import Types from '@/components/money/Types.vue';
   import FormItem from '@/components/money/FormItem.vue';
   import Tags from '@/components/money/Tags.vue';
   import {Component} from 'vue-property-decorator';
@@ -38,7 +36,7 @@ window.localStorage.setItem('version', '0.0.2');
 
 
   @Component({
-    components: {Tabs, Tags, FormItem, Types, NumberPad},
+    components: {Tabs, Tags, FormItem, NumberPad},
   })
   export default class Money extends Vue {
     get tagList() {
