@@ -3,10 +3,11 @@
     <NumberPad :value.sync="record.amount" @submit="SaveRecord"/>
     <FormItem field-name="备注"
               placeholder="在这里输入"
-              @update:value="onUpdateFormItem"/>
-    <Tags/>
+              :input-value.sync="record.note">
+    </FormItem>
+    <Tags @update:value="record.tags=$event"/>
     <Tabs :data-source="recordTypeList"
-         :value.sync="record.type"/>
+          :value.sync="record.type"/>
   </Layout>
 </template>
 
@@ -42,7 +43,8 @@ window.localStorage.setItem('version', '0.0.2');
     get tagList() {
       return this.$store.state.tagList;
     }
-    recordTypeList = recordTypeList
+
+    recordTypeList = recordTypeList;
     record: RecordItem = {
       tags: [],
       note: '',
@@ -60,9 +62,15 @@ window.localStorage.setItem('version', '0.0.2');
     }
 
     SaveRecord() {
+      if (!this.record.tags || this.record.tags.length === 0) {
+        return window.alert('请至少选择一个标签');
+      }
       this.$store.commit('createRecord', this.record);
+      if (this.$store.state.createRecordError === null) {
+        window.alert('数据已保存');
+        this.record.note = '';
+      }
     }
-
   }
 </script>
 
