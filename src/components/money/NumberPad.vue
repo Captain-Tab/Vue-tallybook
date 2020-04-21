@@ -1,11 +1,13 @@
 <template>
   <div CLASS="numberPad">
-    <div class="output">{{outputText}}</div>
+    <div class="output">￥{{outputText}}</div>
     <div class="buttons">
       <button @click="inputContent">1</button>
       <button @click="inputContent">2</button>
       <button @click="inputContent">3</button>
-      <button @click="removeText">删除</button>
+      <button @click="removeText">
+        <Icon class="icon-inside" name="删除"/>
+      </button>
       <button @click="inputContent">4</button>
       <button @click="inputContent">5</button>
       <button @click="inputContent">6</button>
@@ -117,6 +119,11 @@
 
         &:nth-child(4), &:nth-child(7), &:nth-child(10) {
           background: darken($bg, 4*3%);
+        }
+
+        >.icon-inside {
+          width: 5em;
+          height: 2em;
         }
 
         &:nth-child(8), &:nth-child(11), &:nth-child(13) {
