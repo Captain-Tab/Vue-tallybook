@@ -27,7 +27,7 @@ window.onload = function () {
 if (document.documentElement.clientWidth > 500) {
   window.alert('推荐您使用移动设备打开该网页, 请扫描下方二维码');
   const img = document.createElement('img');
-  img.src = '../QRcode.png'
+  img.src = './QRcode.png'
   img.style.position = 'fixed'
   img.style.left = '50%'
   img.style.top = '50%'
